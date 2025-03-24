@@ -157,7 +157,7 @@ ax.legend(wedges, continent_profits_sorted['Continent'], title="Continents", loc
 
 
 for autotext in autotexts:
-    x, y = autotext.get_position()  # Get current position
+    x, y = autotext.get_position()  
     autotext.set_position((x, y)) 
 
 # Display pie chart in Streamlit
