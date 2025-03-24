@@ -48,9 +48,6 @@ fig = px.scatter_geo(country_data,
 
 fig.update_traces(marker=dict(sizemode='area',  # Set size mode to area for proportional sizes
                              size=country_data['Number_of_companies']*10))  # Increased bubble size
-
-
-# Adjust layout for centering and zooming
 fig.update_layout(
     geo=dict(
         center=dict(lat=0, lon=0),  # Center the map at (0,0) for better alignment
@@ -59,7 +56,6 @@ fig.update_layout(
 
 )
 
-# Update geo properties for better visual appeal
 fig.update_geos(
     showcoastlines=True, 
     coastlinecolor="Black", 
@@ -118,7 +114,6 @@ st.title("Top 20 Companies by Sales in 2020")
 st.plotly_chart(fig)
 
 
-# Assuming df is your DataFrame with 'Continent' and 'Profits' columns
 continent_profits = df.groupby('Continent').agg(Total_Profit=('Profits', 'sum')).reset_index()
 
 # Sort by Total_Profit
@@ -145,7 +140,6 @@ st.markdown("<h3 style='font-size: 16px; font-weight: bold;'>Distribution of Pro
 # Plot the pie chart using the new DataFrame
 fig_pie, ax = pyplot.subplots(figsize=(6, 6))  # Adjust the size of the chart
 
-# Create the pie chart with the new combined slice
 wedges, texts, autotexts = ax.pie(continent_profits_sorted['Total_Profit'], 
        labels=None,  
        autopct='%1.1f%%', 
@@ -156,10 +150,8 @@ wedges, texts, autotexts = ax.pie(continent_profits_sorted['Total_Profit'],
        wedgeprops={'width': 0.4}  # Set width for the slices
 )
 
-# Equal aspect ratio ensures that the pie chart is drawn as a circle
 ax.axis('equal')
 
-# Add legend (show continent names outside the chart)
 ax.legend(wedges, continent_profits_sorted['Continent'], title="Continents", loc="center left", bbox_to_anchor=(1.2, 0.5))
 
 
