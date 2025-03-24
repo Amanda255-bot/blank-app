@@ -93,6 +93,34 @@ fig.update_traces(
 # Display the plot in Streamlit
 st.plotly_chart(fig)
 
+# Create a barchart
+
+df['Sales'] = pd.to_numeric(df['Sales'], errors='coerce')
+
+# Sort data by Sales and select the top 20 companies
+top_20_sales = df.nlargest(20, 'Sales')
+
+# Create the bar chart
+fig = px.bar(
+    top_20_sales, 
+    x='Company', 
+    y='Sales', 
+    title="Top 20 Companies by Sales",
+    labels={'Sales': 'Total Sales (in billions)'},
+    color='Sales',
+    color_continuous_scale='Blues'
+)
+
+# Rotate x-axis labels for readability
+fig.update_layout(xaxis_tickangle=-45)
+
+# Display the chart in Streamlit
+st.title("Top 20 Companies by Sales")
+st.plotly_chart(fig)
+
+
+
+
 
 # Assuming df is your DataFrame with 'Continent' and 'Profits' columns
 continent_profits = df.groupby('Continent').agg(Total_Profit=('Profits', 'sum')).reset_index()
