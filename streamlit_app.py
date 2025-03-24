@@ -104,8 +104,7 @@ top_20_sales = df.nlargest(20, 'Sales')
 fig = px.bar(
     top_20_sales, 
     x='Company', 
-    y='Sales', 
-    title="Top 20 Companies by Sales",
+    y='Sales',
     labels={'Sales': 'Total Sales (in billions)'},
     color='Sales',
     color_continuous_scale='Blues'
@@ -115,11 +114,8 @@ fig = px.bar(
 fig.update_layout(xaxis_tickangle=-45)
 
 # Display the chart in Streamlit
-st.title("Top 20 Companies by Sales")
+st.title("Top 20 Companies by Sales in 2020")
 st.plotly_chart(fig)
-
-
-
 
 
 # Assuming df is your DataFrame with 'Continent' and 'Profits' columns
