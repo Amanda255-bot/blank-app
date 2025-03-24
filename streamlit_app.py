@@ -182,8 +182,10 @@ fig.update_traces(
     )
 )
 
-
 fig.update_xaxes(showticklabels=False)
+
+for autotext in autotexts:
+    autotext.set_color('white') 
 
 
 # Show the bubble chart in Streamlit
